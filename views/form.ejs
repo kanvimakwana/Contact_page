@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Linking CSS -->
+</head>
+<body>
+    <form action="/submit" method="POST">
+        <h2>Contact Us</h2>
+        <input type="text" name="name" placeholder="Enter your name" required>
+        <textarea name="message" placeholder="Enter your message" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+    <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            let name = document.querySelector("input[name='name']");
+            let message = document.querySelector("textarea[name='message']");
+    
+            if (!name.value.trim() || !message.value.trim()) {
+                event.preventDefault(); // Prevent form submission
+                this.classList.add("shake");
+    
+                setTimeout(() => this.classList.remove("shake"), 300);
+            }
+        });
+    </script>
+    
+</body>
+</html>
